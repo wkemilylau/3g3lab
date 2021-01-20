@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>LAB API &mdash; 3g3lab  documentation</title>
+  <title>3G3 Lab &mdash; 3g3lab  documentation</title>
   
 
   
@@ -84,7 +84,14 @@
             
               <!-- Local TOC -->
               <div class="local-toc"><ul>
-<li><a class="reference internal" href="#">LAB API</a></li>
+<li><a class="reference internal" href="#">3G3 Lab</a></li>
+<li><a class="reference internal" href="#getting-started">Getting started</a><ul>
+<li><a class="reference internal" href="#running-the-notebook-locally">1. Running the notebook locally</a></li>
+<li><a class="reference internal" href="#running-the-notebook-on-google-colab">2. Running the notebook on Google Colab</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#feedback">Feedback</a></li>
+<li><a class="reference internal" href="#lab-api">LAB API</a></li>
 </ul>
 </div>
             
@@ -133,7 +140,7 @@
     
       <li><a href="#" class="icon icon-home"></a> &raquo;</li>
         
-      <li>LAB API</li>
+      <li>3G3 Lab</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -152,9 +159,66 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-lab">
-<span id="lab-api"></span><h1>LAB API<a class="headerlink" href="#module-lab" title="Permalink to this headline">¶</a></h1>
-<dl class="py function">
+  <div class="section" id="g3-lab">
+<h1>3G3 Lab<a class="headerlink" href="#g3-lab" title="Permalink to this headline">¶</a></h1>
+<p>In this lab, you will explore sparse coding in the primary visual cortex (V1).</p>
+</div>
+<div class="section" id="getting-started">
+<h1>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
+<p>The entry point for this lab is the jupyter notebook <cite>3g3lab.ipynb</cite>.
+You can run it either locally or on Google Colab.
+Running locally has the advantage that you will not need internet access to run the code.
+But for those of you who do not have <cite>python3</cite> installed, or find the process of installing the relevant packages difficult, running the notebook on Google Colab might be easier.</p>
+<div class="section" id="running-the-notebook-locally">
+<h2>1. Running the notebook locally<a class="headerlink" href="#running-the-notebook-locally" title="Permalink to this headline">¶</a></h2>
+<p>To run the notebook locally, you will need to install <cite>git</cite>, <cite>python3</cite>, and the relevant python packages installed if you haven’t already.
+Then you can type the following into your command line to open start the jupyter notebook</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>git clone https:://github.com/tachukao/3g3lab
+<span class="nb">cd</span> 3g3lab
+jupyter notebook
+</pre></div>
+</div>
+<p>The python packages that you will need are:</p>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="https://numpy.org/install/">numpy</a></p></li>
+<li><p><a class="reference external" href="https://scipy.org/install.html">scipy</a></p></li>
+<li><p><a class="reference external" href="https://jupyter.org/install">jupyter</a></p></li>
+<li><p><a class="reference external" href="https://matplotlib.org/users/installing.html">matplotlib</a></p></li>
+</ol>
+<p>You can install all of these packages with:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>pip install numpy scipy jupyter matplotlib
+</pre></div>
+</div>
+<p>if you are using pip, or</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>conda install numpy scipy jupyter matplotlib
+</pre></div>
+</div>
+<p>if you are using conda.</p>
+</div>
+<div class="section" id="running-the-notebook-on-google-colab">
+<h2>2. Running the notebook on Google Colab<a class="headerlink" href="#running-the-notebook-on-google-colab" title="Permalink to this headline">¶</a></h2>
+<p>To run the notebook on Google Colab, you can simply click on this <a class="reference external" href="https://colab.research.google.com/github/tachukao/3g3lab/blob/master/3g3lab.ipynb">link</a> to open up the notebook in your browser.
+When you start running the notebook, you will be prompted to log in to your Google account.
+In section 0 of the notebook <cite>Getting started</cite>, make sure to change the python variable <code class="code python docutils literal notranslate"><span class="name"><span class="pre">mode</span></span></code> from <code class="code python docutils literal notranslate"><span class="literal string single"><span class="pre">‘local’</span></span></code> to <code class="code python docutils literal notranslate"><span class="literal string single"><span class="pre">‘colab’</span></span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mode</span> <span class="o">=</span> <span class="s1">&#39;colab&#39;</span>
+</pre></div>
+</div>
+<p>Happy coding!</p>
+</div>
+</div>
+<div class="section" id="feedback">
+<h1>Feedback<a class="headerlink" href="#feedback" title="Permalink to this headline">¶</a></h1>
+<p>This is the first year that we are running this lab in python.
+Inevitably, there will be mistakes and many areas that can be improved.
+Therefore, if you run into any issues, spot any typos, find parts of the documentation that is unclear, or just have feedback in general, please do let us know (by email or during the office hours).
+Your comments and suggestions will be most appreaciated!</p>
+</div>
+<div class="section" id="lab-api">
+<h1>LAB API<a class="headerlink" href="#lab-api" title="Permalink to this headline">¶</a></h1>
+<p>In the notebook, you will be using a python package specifically called <cite>lab</cite>, specifically written for 3G3.
+You can find its API below.
+To view the source code for each of these functions, you can click on the link <cite>[source]</cite> on the side of the function name.</p>
+<span class="target" id="module-lab"></span><dl class="py function">
 <dt id="lab.grad_error">
 <code class="sig-prename descclassname">lab.</code><code class="sig-name descname">grad_error</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">cost</span></em>, <em class="sig-param"><span class="n">dcost</span></em>, <em class="sig-param"><span class="n">A_or_B</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lab.html#grad_error"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lab.grad_error" title="Permalink to this definition">¶</a></dt>
 <dd><p>Checks implementation of dcost_A or dcost_B with a finite-difference approximation of the gradient</p>
