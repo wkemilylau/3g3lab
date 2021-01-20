@@ -224,7 +224,7 @@ def grad_error(cost, dcost, A_or_B):
     lambd = 0.1
     sigma = 0.3
     sz = 8
-    n_sub = 1
+    n_sub = 3
     n_bas = 64
     A = np.random.randn(n_sub, n_bas)
     B = np.random.randn(n_bas, sz * sz)
