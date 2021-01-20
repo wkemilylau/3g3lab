@@ -1,0 +1,462 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>LAB API &mdash; 3g3lab  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="#" class="icon icon-home"> 3g3lab
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">LAB API</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">3g3lab</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="#" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>LAB API</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-lab">
+<span id="lab-api"></span><h1>LAB API<a class="headerlink" href="#module-lab" title="Permalink to this headline">¶</a></h1>
+<dl class="py function">
+<dt id="lab.grad_error">
+<code class="sig-prename descclassname">lab.</code><code class="sig-name descname">grad_error</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">cost</span></em>, <em class="sig-param"><span class="n">dcost</span></em>, <em class="sig-param"><span class="n">A_or_B</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lab.html#grad_error"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lab.grad_error" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks implementation of dcost_A or dcost_B with a finite-difference approximation of the gradient</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>cost</strong></dt><dd><p>cost function</p>
+</dd>
+<dt><strong>dcost</strong></dt><dd><p>gradient of cost function with respect to A or B</p>
+</dd>
+<dt><strong>A_or_B</strong></dt><dd><p>must be either “A” or “B”, telling the function to check the cost gradient w.r.t. A or B.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>dCerr</dt><dd><p>error in dcost</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>If cost, dcost_A, and dcost_B are implemented correctly, gradient error should be less than 1E-5</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="lab.load_data">
+<code class="sig-prename descclassname">lab.</code><code class="sig-name descname">load_data</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mode</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lab.html#load_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lab.load_data" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>imgs</dt><dd><p>A dictionary of images (keys: I1, I2, I2w, and I3)</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="lab.normalize_B">
+<code class="sig-prename descclassname">lab.</code><code class="sig-name descname">normalize_B</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">B</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lab.html#normalize_B"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lab.normalize_B" title="Permalink to this definition">¶</a></dt>
+<dd><p>Normalises each basis function in the input.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>B</strong></dt><dd><p>basis functions of size (n_bases, n_pix)</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="lab.optimal_A">
+<code class="sig-prename descclassname">lab.</code><code class="sig-name descname">optimal_A</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">cost</span></em>, <em class="sig-param"><span class="n">dcost_A</span></em>, <em class="sig-param"><span class="n">dcost_B</span></em>, <em class="sig-param"><span class="n">A0</span></em>, <em class="sig-param"><span class="n">B</span></em>, <em class="sig-param"><span class="n">S</span></em>, <em class="sig-param"><span class="n">lambd</span></em>, <em class="sig-param"><span class="n">sigma</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lab.html#optimal_A"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lab.optimal_A" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds the optimal activations A for image patches S and basis functions B with initial guess A0</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>cost</strong></dt><dd><p>cost function</p>
+</dd>
+<dt><strong>dcost_A</strong></dt><dd><p>gradient of cost function with respect to A i.e. dcost/dA</p>
+</dd>
+<dt><strong>dcost_B</strong></dt><dd><p>gradient of cost function with respect to B i.e. dcost/dB</p>
+</dd>
+<dt><strong>A0</strong></dt><dd><p>initial guess of optimal activations A</p>
+</dd>
+<dt><strong>B</strong></dt><dd><p>bases functions with shape (n_bas, n_pix)</p>
+</dd>
+<dt><strong>S</strong></dt><dd><p>matrix of subimages with shape (n_sub, n_pix)</p>
+</dd>
+<dt><strong>lambd</strong></dt><dd><p>scalar parameter that weighs the importance of reconstruction error and sparsity</p>
+</dd>
+<dt><strong>sigma</strong></dt><dd><p>activation scale hyper-parameter in the cost function</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>A</dt><dd><p>optimal A</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="lab.overlayimages">
+<code class="sig-prename descclassname">lab.</code><code class="sig-name descname">overlayimages</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">img</span></em>, <em class="sig-param"><span class="n">basis</span></em>, <em class="sig-param"><span class="n">oimg</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lab.html#overlayimages"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lab.overlayimages" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>img</strong></dt><dd><p>If oimg is None, then it is treated as the original image.
+Otherwise, it is only used for computing the filtered image</p>
+</dd>
+<dt><strong>basis</strong></dt><dd><p>basis functions</p>
+</dd>
+<dt><strong>oimg</strong></dt><dd><p>Original image</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="lab.pca">
+<code class="sig-prename descclassname">lab.</code><code class="sig-name descname">pca</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lab.html#pca"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lab.pca" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>x: matrix of subimages with shape (n_sub, n_pix)</strong></dt><dd></dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>bases: basis functions with shape (n_pix, n_pix)</dt><dd></dd>
+<dt>pct: percentage of variance captured by each basis functions (each row of bases)</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="lab.pca3g3">
+<code class="sig-prename descclassname">lab.</code><code class="sig-name descname">pca3g3</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">imgs</span></em>, <em class="sig-param"><span class="n">sz</span></em>, <em class="sig-param"><span class="n">n_sub</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lab.html#pca3g3"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lab.pca3g3" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extract subimages from an image set and perform PCA them.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>imgs</strong></dt><dd><p>images with shape (N_img, N_pix), where N_pix is the number of pixels in each full image</p>
+</dd>
+<dt><strong>sz</strong></dt><dd><p>size of the image patches</p>
+</dd>
+<dt><strong>n_sub</strong></dt><dd><p>number of image patches to sample</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>bases</dt><dd><p>basis functions with shape (n_pix, n_pix), where n_pix is the number of pixels in each subimage</p>
+</dd>
+<dt>pct</dt><dd><p>percentage of variance captured by each basis functions (each row of bases)</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="lab.plot_all_images">
+<code class="sig-prename descclassname">lab.</code><code class="sig-name descname">plot_all_images</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lab.html#plot_all_images"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lab.plot_all_images" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>x</strong></dt><dd><p>images with shape (n_img, n_pix)
+e.g., imgs[“I2”]</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>None</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="lab.plot_image">
+<code class="sig-prename descclassname">lab.</code><code class="sig-name descname">plot_image</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">i</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lab.html#plot_image"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lab.plot_image" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>x</strong></dt><dd><p>images (e.g. imgs[“I2”])</p>
+</dd>
+<dt><strong>i</strong></dt><dd><p>ith image of x (i.e., x[i])</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>None</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="lab.sample_patches">
+<code class="sig-prename descclassname">lab.</code><code class="sig-name descname">sample_patches</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">imgs</span></em>, <em class="sig-param"><span class="n">sz</span></em>, <em class="sig-param"><span class="n">n_sub</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lab.html#sample_patches"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lab.sample_patches" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sample image patches</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>imgs</strong></dt><dd><p>images with shape (N_img, N_pix)</p>
+</dd>
+<dt><strong>sz</strong></dt><dd><p>side-length (in pixels) of the image patches</p>
+</dd>
+<dt><strong>n_sub</strong></dt><dd><p>number of image patches to sample</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>S</dt><dd><p>matrix of image patches with shape (n_sub, n_pix), where n_pix =  sz * sz</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="lab.sparseopt">
+<code class="sig-prename descclassname">lab.</code><code class="sig-name descname">sparseopt</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">cost</span></em>, <em class="sig-param"><span class="n">dcost_A</span></em>, <em class="sig-param"><span class="n">dcost_B</span></em>, <em class="sig-param"><span class="n">imgs</span></em>, <em class="sig-param"><span class="n">n_iter</span></em>, <em class="sig-param"><span class="n">eta</span><span class="o">=</span><span class="default_value">0.2</span></em>, <em class="sig-param"><span class="n">lambd</span><span class="o">=</span><span class="default_value">0.1</span></em>, <em class="sig-param"><span class="n">sigma</span><span class="o">=</span><span class="default_value">0.316</span></em>, <em class="sig-param"><span class="n">sz</span><span class="o">=</span><span class="default_value">8</span></em>, <em class="sig-param"><span class="n">n_bas</span><span class="o">=</span><span class="default_value">64</span></em>, <em class="sig-param"><span class="n">n_sub</span><span class="o">=</span><span class="default_value">100</span></em>, <em class="sig-param"><span class="n">verbose</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">display_every</span><span class="o">=</span><span class="default_value">50</span></em>, <em class="sig-param"><span class="n">B0</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lab.html#sparseopt"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lab.sparseopt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Learns the basis functions for imgs</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>cost</strong></dt><dd><p>cost function</p>
+</dd>
+<dt><strong>dcost_A</strong></dt><dd><p>gradient of cost function with respect to A i.e. dcost/dA</p>
+</dd>
+<dt><strong>dcost_B</strong></dt><dd><p>gradient of cost function with respect to B i.e. dcost/dB</p>
+</dd>
+<dt><strong>imgs</strong></dt><dd><p>the set images for which we wish to find the optimal basis functions, with shape (N_img, N_pix)</p>
+</dd>
+<dt><strong>n_iter</strong><span class="classifier">int</span></dt><dd><p>number of iterations of optimization</p>
+</dd>
+<dt><strong>eta</strong><span class="classifier">float</span></dt><dd><p>learning rate</p>
+</dd>
+<dt><strong>lambd</strong><span class="classifier">float</span></dt><dd><p>scalar parameter that weighs the importance of reconstruction error and sparsity</p>
+</dd>
+<dt><strong>sigma</strong><span class="classifier">float</span></dt><dd><p>activation scale hyper-parameter in the cost function</p>
+</dd>
+<dt><strong>sz</strong><span class="classifier">int</span></dt><dd><p>size of the image patches to sample form imgs</p>
+</dd>
+<dt><strong>n_bas</strong><span class="classifier">int</span></dt><dd><p>number of bases functions to learn</p>
+</dd>
+<dt><strong>n_sub</strong><span class="classifier">int</span></dt><dd><p>number of image patches to use at each iteration</p>
+</dd>
+<dt><strong>verbose</strong><span class="classifier">bool</span></dt><dd><p>if False, print only iteration, cost, err sparsity 
+if True, print also avg A var norm, avg B norm, and avg gain</p>
+</dd>
+<dt><strong>display_every</strong><span class="classifier">int</span></dt><dd><p>determines how often the progress is printed and the bases plotted</p>
+</dd>
+<dt><strong>B0</strong></dt><dd><p>initial guess of the bases functions (optional)</p>
+</dd>
+<dt><strong>Returns</strong></dt><dd></dd>
+<dt><strong>——-</strong></dt><dd></dd>
+<dt><strong>B</strong></dt><dd><p>optimal basis functions</p>
+</dd>
+<dt><strong>cost_hist</strong></dt><dd><p>a list of the cost over the course of the optimization (computed every display_every iteration)</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Ta-Chu Kao.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
