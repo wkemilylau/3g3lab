@@ -48,7 +48,7 @@ def plot_image(x, i):
     x = x.reshape(sz, sz)
     plt.figure()
     plt.imshow(x, interpolation="nearest")
-    plt.axis["off"]
+    plt.axis("off")
 
 
 def plot_all_images(x):
