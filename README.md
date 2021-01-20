@@ -11,10 +11,10 @@ pip install sphinx sphinx_rtd_theme numpydoc
 Once you have these packages installed, you can simply run
 
 ```sh
-sphinx-build -b html . doc
+sphinx-build -b html . docs
 ````
 
-and open the documentation at `doc/index.html` with your browser.
+and open the documentation at `docs/index.html` with your browser.
 
 
 
