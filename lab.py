@@ -364,6 +364,7 @@ def sparseopt(cost,
         determines how often the progress is printed and the bases plotted
     B0
         initial guess of the bases functions (optional)
+
     Returns
     -------
     B
