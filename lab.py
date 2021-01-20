@@ -76,7 +76,7 @@ def plot_all_images(x):
         for i in range(n_img):
             acol = i % n_cols
             arow = (i - acol) // n_cols
-            axes[arow, acol].imshow(x[i].reshape((sz, sz)))
+            axes[arow, acol].imshow(x[i].reshape((sz, sz)), interpolation="nearest")
             axes[arow, acol].axis("off")
     else:
         plot_image(x, 0)
@@ -104,17 +104,17 @@ def overlayimages(img, basis, oimg=None):
     filtered = ndimage.convolve(img, basis)
     img = img if oimg is None else img  # used for I2w
     _, axes = plt.subplots(2, 2, figsize=(8, 8))
-    axes[0, 0].imshow(img)
+    axes[0, 0].imshow(img, interpolation="nearest")
     axes[0, 0].axis("off")
     axes[0, 0].title.set_text("original image")
-    axes[0, 1].imshow(filtered, cmap="RdBu_r")
+    axes[0, 1].imshow(filtered, cmap="RdBu_r", interpolation="nearest")
     axes[0, 1].axis("off")
     axes[0, 1].title.set_text("filtered image")
-    axes[1, 0].imshow(img, cmap="gray", alpha=0.55)
-    axes[1, 0].imshow(filtered, cmap="RdBu_r", alpha=0.45)
+    axes[1, 0].imshow(img, cmap="gray", alpha=0.55, interpolation="nearest")
+    axes[1, 0].imshow(filtered, cmap="RdBu_r", alpha=0.45, interpolation="nearest")
     axes[1, 0].axis("off")
     axes[1, 0].title.set_text("filtered overlayed on original")
-    axes[1, 1].imshow(basis)
+    axes[1, 1].imshow(basis, interpolation="nearest")
     axes[1, 1].axis("off")
     axes[1, 1].title.set_text("filter (basis)")
 
@@ -418,7 +418,7 @@ def sparseopt(cost,
             for ii in range(n_bas):
                 axcol = ii % n_cols
                 axrow = (ii - axcol) // n_cols
-                axes[axrow, axcol].imshow(B[ii].reshape((sz, sz)))
+                axes[axrow, axcol].imshow(B[ii].reshape((sz, sz)), interpolation="nearest")
                 axes[axrow, axcol].axis("off")
             display.display(fig)
             display.clear_output(wait=True)
