@@ -10,16 +10,16 @@ Getting started
 ===============
 
 
-The entry point for this lab is the jupyter notebook `3g3lab.ipynb`.
+The entry point for this lab is `3g3lab.ipynb`.
 You can run it either locally or on Google Colab.
-Running locally has the advantage that you will not need internet access to run the code.
+Running it locally has the advantage that you will not need internet access to run the code.
 But for those of you who do not have `python3` installed, or find the process of installing the relevant packages difficult, running the notebook on Google Colab might be easier.
 
 1. Running the notebook locally
 -------------------------------
 
-To run the notebook locally, you will need to install `git`, `python3`, and the relevant python packages installed if you haven't already. 
-Then you can type the following into your command line to open start the jupyter notebook
+To run the notebook locally, you will need to install `git`, `python3`, and the relevant python packages if you haven't already. 
+Then you can type the following into your command line to open the jupyter notebook
 
 .. code-block:: sh
 
@@ -67,16 +67,16 @@ Feedback
 
 This is the first year that we are running this lab in python. 
 Inevitably, there will be mistakes and many areas that can be improved.
-Therefore, if you run into any issues, spot any typos, find parts of the documentation that is unclear, or just have feedback in general, please do let us know (by email or during the office hours).
+Therefore, if you run into any issues, spot any typos, find parts of the documentation that is unclear, or just have nay feedback in general, please do let us know (by email or during the office hours).
 Your comments and suggestions will be most appreaciated!
 
 
 LAB API
 =======
 
-In the notebook, you will be using a python package specifically called `lab`, specifically written for 3G3. 
+In the notebook, you will be using a python package called `lab`, specifically written for 3G3. 
 You can find its API below.
-To view the source code for each of these functions, you can click on the link `[source]` on the side of the function name.
+To view the source code for each of these functions, click on the link `[source]` on the side of each function.
 
 .. automodule:: lab
    :members:
