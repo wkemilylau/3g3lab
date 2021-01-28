@@ -1,5 +1,7 @@
 # 3G3 Lab
 
+The documentation can be found [here](https://tachukao.github.io/3g3lab).
+
 ## Building the documentation for `lab.py` locally
 
 To build the documentation for `lab.py`, you need to install a few python packages:
