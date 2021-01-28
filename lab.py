@@ -62,7 +62,7 @@ def plot_image(x, i):
         raise Exception("index %i out of bounds, total number of images: %i" %
                         (i, x.shape[0]))
     n_pix = x.shape[1]
-    x = rescale(x, axis=0)
+    x = rescale_range(x, axis=0)
     x = x[i]
     sz = int(np.sqrt(n_pix))
     x = x.reshape(sz, sz)
@@ -85,7 +85,7 @@ def plot_all_images(x):
     """
     n_img, n_pix = x.shape
     if n_img > 1:
-        x = rescale(x, axis=0)
+        x = rescale_range(x, axis=0)
         n_cols = int(np.ceil(np.sqrt(n_img)))
         n_rows = n_cols
         _, axes = plt.subplots(n_rows,
