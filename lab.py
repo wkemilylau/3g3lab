@@ -439,7 +439,7 @@ def sparseopt(cost,
             for ii in range(n_bas):
                 axcol = ii % n_cols
                 axrow = (ii - axcol) // n_cols
-                rb = rescale_range(B, axis=0)
+                rB = rescale_range(B, axis=0)
                 axes[axrow, axcol].imshow(rB[ii].reshape((sz, sz)), interpolation="nearest")
                 axes[axrow, axcol].axis("off")
             display.display(fig)
