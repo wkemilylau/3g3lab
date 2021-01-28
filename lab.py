@@ -1,5 +1,6 @@
 import numpy as np
 from io import BytesIO
+import matplotlib
 import matplotlib.pyplot as plt
 import requests
 import scipy.ndimage as ndimage
@@ -414,13 +415,11 @@ def sparseopt(cost,
             else:
                 msg = "iter %i cost %.4f, err %.4f, sparsity %.4f" % (
                     i + 1, l, err, sparsity)
-            Bmin = np.min(B)
-            Bmax = np.max(B)
             fig.suptitle(msg)
             for ii in range(n_bas):
                 axcol = ii % n_cols
                 axrow = (ii - axcol) // n_cols
-                axes[axrow, axcol].imshow(B[ii].reshape((sz, sz)), interpolation="nearest", vmin=Bmin, vmax=Bmax)
+                axes[axrow, axcol].imshow(B[ii].reshape((sz, sz)), interpolation="nearest", norm=matplotlib.colors.DivergingNorm(vcenter=0))
                 axes[axrow, axcol].axis("off")
             display.display(fig)
             display.clear_output(wait=True)
