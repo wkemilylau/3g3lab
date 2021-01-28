@@ -8,25 +8,6 @@ from IPython import display
 import time
 
 
-def rescale_range(x, axis=1):
-    """
-    Rescale x such that its range along the axis is [0,1]
-
-    Parameters
-    ----------
-    x : np.array
-    axis : int
-
-    Returns
-    -------
-    x : np.array
-    """
-    x = x - np.min(x, axis=axis, keepdims=True)
-    x = x / np.max(x, axis=axis, keepdims=True)
-    return x
-
-
-
 def load_data(mode):
     """
     Returns
@@ -62,7 +43,6 @@ def plot_image(x, i):
         raise Exception("index %i out of bounds, total number of images: %i" %
                         (i, x.shape[0]))
     n_pix = x.shape[1]
-    x = rescale_range(x, axis=1)
     x = x[i]
     sz = int(np.sqrt(n_pix))
     x = x.reshape(sz, sz)
@@ -85,7 +65,6 @@ def plot_all_images(x):
     """
     n_img, n_pix = x.shape
     if n_img > 1:
-        x = rescale_range(x, axis=1)
         n_cols = int(np.ceil(np.sqrt(n_img)))
         n_rows = n_cols
         _, axes = plt.subplots(n_rows,
@@ -435,12 +414,13 @@ def sparseopt(cost,
             else:
                 msg = "iter %i cost %.4f, err %.4f, sparsity %.4f" % (
                     i + 1, l, err, sparsity)
+            Bmin = np.min(B)
+            Bmax = np.max(B)
             fig.suptitle(msg)
             for ii in range(n_bas):
                 axcol = ii % n_cols
                 axrow = (ii - axcol) // n_cols
-                rB = rescale_range(B, axis=1)
-                axes[axrow, axcol].imshow(rB[ii].reshape((sz, sz)), interpolation="nearest")
+                axes[axrow, axcol].imshow(B[ii].reshape((sz, sz)), interpolation="nearest", vmin=Bmin, vmax=Bmax)
                 axes[axrow, axcol].axis("off")
             display.display(fig)
             display.clear_output(wait=True)
