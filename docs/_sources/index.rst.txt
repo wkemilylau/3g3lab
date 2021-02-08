@@ -23,7 +23,7 @@ Then you can type the following into your command line to open the jupyter noteb
 
 .. code-block:: sh
 
-   git clone https:://github.com/tachukao/3g3lab
+   git clone https://github.com/tachukao/3g3lab
    cd 3g3lab
    jupyter notebook
 
