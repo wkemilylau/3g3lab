@@ -23,7 +23,7 @@ Then you can type the following into your command line to open the jupyter noteb
 
 .. code-block:: sh
 
-   git clone https://github.com/tachukao/3g3lab
+   git clone https://github.com/ghennequin/3g3lab
    cd 3g3lab
    jupyter notebook
 
@@ -51,7 +51,7 @@ if you are using conda.
 2. Running the notebook on Google Colab
 ---------------------------------------
 
-To run the notebook on Google Colab, you can simply click on this `link <https://colab.research.google.com/github/tachukao/3g3lab/blob/master/3g3lab.ipynb>`_ to open up the notebook in your browser. 
+To run the notebook on Google Colab, you can simply click on this `link <https://colab.research.google.com/github/ghennequin/3g3lab/blob/master/3g3lab.ipynb>` to open up the notebook in your browser. 
 When you start running the notebook, you will be prompted to log in to your Google account. 
 In section 0 of the notebook `Getting started`, make sure to change the python variable :python:`mode` from :python:`'local'` to :python:`'colab'`:
 
@@ -65,10 +65,8 @@ Happy coding!
 Feedback
 ========
 
-This is the first year that we are running this lab in python. 
-Inevitably, there will be mistakes and many areas that can be improved.
-Therefore, if you run into any issues, spot any typos, find parts of the documentation that is unclear, or just have nay feedback in general, please do let us know (by email or during the office hours).
-Your comments and suggestions will be most appreaciated!
+If you run into any issues, spot any typos, find parts of the documentation that is unclear, or just have nay feedback in general, please do let us know (by email or during the office hours).
+Your comments and suggestions will be most appreciated!
 
 
 LAB API

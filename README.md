@@ -1,6 +1,6 @@
 # 3G3 Lab
 
-The documentation can be found [here](https://tachukao.github.io/3g3lab).
+The documentation can be found [here](https://ghennequin.github.io/3g3lab).
 
 ## Building the documentation for `lab.py` locally
 
