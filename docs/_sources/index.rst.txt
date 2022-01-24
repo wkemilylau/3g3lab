@@ -51,7 +51,7 @@ if you are using conda.
 2. Running the notebook on Google Colab
 ---------------------------------------
 
-To run the notebook on Google Colab, you can simply click on this `link <https://colab.research.google.com/github/ghennequin/3g3lab/blob/master/3g3lab.ipynb>` to open up the notebook in your browser. 
+To run the notebook on Google Colab, you can simply click on this `link <https://colab.research.google.com/github/ghennequin/3g3lab/blob/master/3g3lab.ipynb>`_ to open up the notebook in your browser. 
 When you start running the notebook, you will be prompted to log in to your Google account. 
 In section 0 of the notebook `Getting started`, make sure to change the python variable :python:`mode` from :python:`'local'` to :python:`'colab'`:
 
