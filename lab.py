@@ -1,6 +1,7 @@
 import numpy as np
 from io import BytesIO
 import matplotlib.pyplot as plt
+from mpl_toolkits.axes_grid1 import make_axes_locatable
 import requests
 import scipy.ndimage as ndimage
 from scipy.optimize import minimize, approx_fprime
@@ -46,8 +47,9 @@ def plot_image(x, i):
     x = x[i]
     sz = int(np.sqrt(n_pix))
     x = x.reshape(sz, sz)
+    cl = np.max(np.abs(x))
     plt.figure()
-    plt.imshow(x, interpolation="nearest")
+    plt.imshow(x, interpolation="nearest", vmin=-cl, vmax=cl)
     plt.axis("off")
 
 
@@ -61,10 +63,11 @@ def plot_all_images(x):
 
     Returns
     -------
-    None
+    Note that all images share the same color scale.
     """
     n_img, n_pix = x.shape
     if n_img > 1:
+        cl = np.max(np.abs(x))
         n_cols = int(np.ceil(np.sqrt(n_img)))
         n_rows = n_cols
         _, axes = plt.subplots(n_rows,
@@ -76,7 +79,7 @@ def plot_all_images(x):
         for i in range(n_img):
             acol = i % n_cols
             arow = (i - acol) // n_cols
-            axes[arow, acol].imshow(x[i].reshape((sz, sz)), interpolation="nearest")
+            axes[arow, acol].imshow(x[i].reshape((sz, sz)), interpolation="nearest", vmin=-cl, vmax=cl)
             axes[arow, acol].axis("off")
     else:
         plot_image(x, 0)
@@ -103,20 +106,30 @@ def overlayimages(img, basis, oimg=None):
     basis = basis.reshape((sz, sz))
     filtered = ndimage.convolve(img, basis)
     img = img if oimg is None else img  # used for I2w
-    _, axes = plt.subplots(2, 2, figsize=(8, 8))
+    fig, axes = plt.subplots(2, 2, figsize=(8, 8))
     axes[0, 0].imshow(img, interpolation="nearest")
     axes[0, 0].axis("off")
     axes[0, 0].title.set_text("original image")
-    axes[0, 1].imshow(filtered, cmap="RdBu_r", interpolation="nearest")
+    cl = np.max(np.abs(filtered))
+    plt01 = axes[0, 1].imshow(filtered, cmap="RdBu_r", interpolation="nearest", vmin=-cl, vmax=cl)
+    divider = make_axes_locatable(axes[0, 1])
+    cax = divider.append_axes('right', size='5%', pad=0.05)
+    fig.colorbar(plt01, cax=cax, orientation='vertical')
     axes[0, 1].axis("off")
     axes[0, 1].title.set_text("filtered image")
     axes[1, 0].imshow(img, cmap="gray", alpha=0.55, interpolation="nearest")
-    axes[1, 0].imshow(filtered, cmap="RdBu_r", alpha=0.45, interpolation="nearest")
+    axes[1, 0].imshow(filtered, cmap="RdBu_r", alpha=0.45, interpolation="nearest", vmin=-cl, vmax=cl)
     axes[1, 0].axis("off")
     axes[1, 0].title.set_text("filtered overlayed on original")
-    axes[1, 1].imshow(basis, interpolation="nearest")
+    cl = np.max(np.abs(basis))
+    plt11 = axes[1, 1].imshow(basis, interpolation="nearest", vmin=-cl, vmax=cl)
+    divider = make_axes_locatable(axes[1, 1])
+    cax = divider.append_axes('right', size='5%', pad=0.05)
+    fig.colorbar(plt11, cax=cax, orientation='vertical')
     axes[1, 1].axis("off")
     axes[1, 1].title.set_text("filter (basis)")
+
+
 
 
 def sample_patches(imgs, sz, n_sub):
@@ -170,6 +183,9 @@ def pca(x):
     var = np.square(s)
     pct = var / np.sum(var)
     bases = vt
+    # make sure the each row has >0 mean (that will ease interpretation of the color maps)
+    s = np.sign(np.mean(bases, axis=1))
+    bases = np.reshape(s, (-1, 1)) * bases
     return bases, pct
 
 
