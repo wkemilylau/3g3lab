@@ -245,6 +245,27 @@ def grad_error(cost, dcost, A_or_B):
     A = np.random.randn(n_sub, n_bas)
     B = np.random.randn(n_bas, sz * sz)
     S = np.random.randn(n_sub, sz * sz)
+    
+    # Checking of return types of cost function, as this is typically a hickup for students
+    try:
+        c, err, sparsity = cost(A, B, S, lambd, sigma)
+    except:
+        raise AssertionError("cost function should return a tuple of length 3 (c, err, sparsity)")
+    assert isinstance(c, float),   "cost function should return a float as the first 'cost' element of the tuple"
+    assert isinstance(err, float),   "cost function should return a float as the second 'error' element of the tuple"
+    assert isinstance(sparsity, float),   "cost function should return a float as the third 'sparsity' element of the tuple"
+    # checking of return types for the cost gradient functions
+    if A_or_B == "A":
+        dcost_output = dcost(A, B, S, lambd, sigma)
+        assert isinstance(dcost_output, np.ndarray), "dcost function should return a numpy array"
+        assert dcost_output.shape == A.shape,        "dcost function should return a numpy array of the same shape as A"
+
+    elif A_or_B == "B":
+        dcost_output = dcost(A, B, S, lambd, sigma)
+        assert isinstance(dcost_output, np.ndarray), "dcost function should return a numpy array"
+        assert dcost_output.shape == B.shape,        "dcost function should return a numpy array of the same shape as B"
+    
+    # Checking of error magnitudes
     # In Python, functions can be defined as "lambda expressions"
     # (do not confuse lambda in the next lines with lambd -- see https://docs.python.org/3/tutorial/controlflow.html#lambda-expressions)
     if A_or_B == "A":
